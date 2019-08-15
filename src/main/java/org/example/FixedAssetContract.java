@@ -101,13 +101,13 @@ public class FixedAssetContract implements ContractInterface {
         logger.info("Exiting createAssetsFromBatch");
     }
 
-    @Transaction(submit=false)
+    @Transaction()
     public FixedAsset getAsset(Context ctx, String uuid) {
         logger.info("Performing getState for asset with uuid: " + uuid);
         return FixedAsset.fromJSONString(new String(ctx.getStub().getState(uuid), UTF_8));
     }
 
-    @Transaction(submit=false)
+    @Transaction()
     public FixedAsset[] getAssetsFromBatch(Context ctx, String batch) {
         logger.info("Entering getAssetsFromBatch");
         JSONArray jsonBatch = new JSONArray(batch);
@@ -132,7 +132,7 @@ public class FixedAssetContract implements ContractInterface {
      * @param passedBookmark - the bookmark from which to start the return
      * @return the results of the paginated query and responseMetadata in a JSON object
      */
-    @Transaction(submit=false)
+    @Transaction()
     public QueryResponse<FixedAsset> paginatedRichQuery(Context ctx, String queryString, String pagesize, String passedBookmark) {
         logger.info("Entering paginated rich query with pagesize [" + pagesize + "] abd query string: " + queryString);
         int pageSize = Integer.parseInt(pagesize);
@@ -154,7 +154,7 @@ public class FixedAssetContract implements ContractInterface {
      * @param passedBookmark - the bookmark from which to start the return
      * @return the results of the paginated query and responseMetadata in a JSON object
      */
-    @Transaction(submit=false)
+    @Transaction()
     public QueryResponse<FixedAsset> paginatedRangeQuery(Context ctx, String startKey, String endKey, String pagesize, String passedBookmark) {
         logger.info("Entering paginated range query with pagesize [" + pagesize + "] and limit keys [" + startKey + "," + endKey + "]");
 
