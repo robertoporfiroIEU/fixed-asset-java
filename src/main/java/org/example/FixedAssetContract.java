@@ -42,6 +42,14 @@ public class FixedAssetContract implements ContractInterface {
     }
 
     /**
+     * Placeholder for function that isnt needed functionally
+     */
+    @Transaction()
+    public void init(Context ctx) {
+        logger.info("Placeholder function");
+    }
+
+    /**
      * Return a null response
      * @param ctx the transaction context
      * @return a null response
